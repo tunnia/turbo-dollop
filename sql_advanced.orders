@@ -1,0 +1,33 @@
+SELECT sum(Quantity) as quantity,
+Product
+FROM BIT_DB.FebSales 
+WHERE Product like '%Headphones%'
+GROUP BY Product
+
+SELECT sum(quantity*price)/count(cust.acctnum)
+FROM BIT_DB.FebSales Feb
+
+LEFT JOIN BIT_DB.customers cust
+ON FEB.orderid=cust.order_id
+
+
+select sum(quantity)/count(cust.acctnum)
+FROM BIT_DB.FebSales Feb
+
+LEFT JOIN BIT_DB.customers cust
+ON FEB.orderid=cust.order_id
+
+SELECT product, 
+sum(quantity*price)
+FROM BIT_DB.JanSales 
+GROUP BY product
+ORDER BY sum(quantity*price) desc 
+LIMIT 1
+
+select sum(quantity),
+price,
+sum(quantity)*price as revenue,
+sum(quantity*price) as revenue2,
+product 
+FROM BIT_DB.JanSales
+group by product
